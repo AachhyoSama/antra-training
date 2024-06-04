@@ -127,17 +127,3 @@ Array.prototype.mySplice = function (start, delCount, ...items) {
 let numbersCopy4 = [...numbers];
 console.log("Custom splice (delete):", numbersCopy4.mySplice(2, 4)); // delete 4 elements starting from index 2
 console.log("After custom splice (delete):", numbersCopy4);
-
-let numbersCopy5 = [...numbers];
-console.log(
-    "Custom splice with negative index (delete):",
-    numbersCopy5.mySplice(-5, 3)
-); // delete 3 elements starting from -5
-console.log("After custom splice with negative index (delete):", numbersCopy5);
-
-let numbersCopy6 = [...numbers];
-console.log(
-    "Custom splice with replacement:",
-    numbersCopy6.mySplice(2, 3, 101, 102)
-); // replace 3 elements starting from index 2 with 101, 102
-console.log("After custom splice with replacement:", numbersCopy6);
