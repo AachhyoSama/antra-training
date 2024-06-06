@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", (event) => {
-    fetch("https://jsonplaceholder.typicode.com/todos")
-        .then((response) => response.json())
+    getTodoList()
         .then((data) => {
             data.forEach((item) => {
                 addListItem(item.title, item.completed);
@@ -19,6 +18,22 @@ document.addEventListener("DOMContentLoaded", (event) => {
         false
     );
 });
+
+function getTodoList() {
+    return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://jsonplaceholder.typicode.com/todos");
+        xhr.onload = () => {
+            if (xhr.status === 200) {
+                resolve(JSON.parse(xhr.responseText));
+            } else {
+                reject("Failed to fetch data");
+            }
+        };
+        xhr.onerror = () => reject("Network error");
+        xhr.send();
+    });
+}
 
 function addListItem(text, completed = false) {
     var li = document.createElement("li");
